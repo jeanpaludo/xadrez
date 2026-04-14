@@ -1,53 +1,61 @@
 #include <stdio.h>
 
-int main(){
-
-    //torre se move 5 casas para direita
-
-    int torre, bispo, rainha, cavalo;
-
-printf("\n");
-printf("### MOVIMENTI DA TORRE ###\n");
-printf("\n");
-
-for(torre = 0; torre < 5; torre++){
-        printf("direita %d\n",torre);
+// Função para a Torre
+void moverTorre(int numero) {
+    if (numero > 0) {
+        moverTorre(numero - 1);
+        printf("direita: %d\n", numero);
     }
+}
 
-printf("\n");    
-printf("### MOVIMENTI DA RAINHA ###\n");
-printf("\n");
-
-  rainha = 1;
-  
-    while (rainha <= 8)
-    {
-    printf("casas para esquerda: %d\n", rainha);
-    rainha++;         
+// Função para o Bispo
+void moverBispo(int numero) {
+    if (numero > 0) {
+        moverBispo(numero - 1);
+        printf("bispo direita cima: %d\n", numero);
     }
+}
+//função rainha
+void moverRainha(int numero){
+  if(numero > 0){
+    moverRainha(numero -1);
+    printf("rainha cima: %d\n", numero);
+  }
+}
 
-   printf("\n"); 
-   printf("### MOVIMENTI DA BISPO ###\n");
-   printf("\n");
+int main() {
+    int bispo = 5, torre = 5, rainha = 8;
+    printf("--- INICIO DOS MOVIMENTOS ---\n\n");
 
-   bispo = 1;
-    do {
-        
-      printf(" Bispo moveu para Cima, Direita %d \n", bispo);
-      bispo++;
-    } while (bispo <= 5); 
-printf("\n");
-printf("### MOVIMENTI DA torre ###\n");
-printf("\n");
+    // Chama a primeira estrutura recursiva
+    printf("Movendo a Torre:\n");
+    moverTorre(torre);
 
-    for(torre = 1; torre <= 2; torre++){
+    printf("\n----------------------------\n");
 
-       for(int j = 1; j < 2; j++){
+    // Chama a segunda estrutura recursiva logo abaixo
+    printf("Movendo o Bispo:\n");
+    moverBispo(bispo);
+
+    printf("\n----------------------------\n");
+
+    // Chama a terceira estrutura recursiva logo abaixo
+    printf("Movendo a Rainha:\n");
+    moverRainha(rainha);
+
+    
+    printf("\n----------------------------\n");
+    
+ 
+        for(int j = 0; j < 2; j++){
        printf("cavalo moveu baixo  \n");
       }
-    }
-  printf("cavalo moveu para esquerda\n");
+    
+     printf("cavalo moveu para esquerda\n");
 
+
+
+    printf("\n--- TODOS OS MOVIMENTOS FINALIZADOS ---\n");
 
     return 0;
 }
